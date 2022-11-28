@@ -1,0 +1,114 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Phonotactic",
+
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#category"
+    },
+    {
+      "include": "#punctuation"
+    },
+    {
+      "include": "#pattern"
+    },
+    {
+      "include": "#unknown"
+    }
+  ],
+
+  "repository": {
+    "comments": {
+      "name": "comment.line.phn",
+      "begin": "#",
+      "end": "\n"
+    },
+
+    "keywords": {
+      "name": "keyword.other.keyword.phn",
+      "match": "\\b(use|def|not)\\b"
+    },
+
+    "punctuation": {
+      "name": "keyword.operator.global.phn",
+      "match": "="
+    },
+
+    "pattern": {
+      "name": "punctuation.brackets.angle.pattern.phn",
+      "begin": "<",
+      "end": ">",
+      "patterns": [
+        {
+          "include": "#pattern-inner"
+        }
+      ]
+    },
+
+    "pattern-inner": {
+      "patterns": [
+        {
+          "name": "constant.character.escape.phn",
+          "match": "\\\\."
+        },
+        {
+          "name": "punctuation.brackets.group.phn",
+          "begin": "\\[",
+          "end": "\\]",
+          "patterns": [{ "include": "#pattern-inner" }]
+        },
+        {
+          "name": "entity.name.function.optional.phn",
+          "begin": "\\(",
+          "end": "\\)",
+          "patterns": [{ "include": "#pattern-inner" }]
+        },
+        {
+          "name": "keyword.other.repeat.phn",
+          "begin": "\\{",
+          "end": "\\}",
+          "patterns": [{ "include": "#pattern-inner" }]
+        },
+        {
+          "name": "keyword.operator.inner.phn",
+          "match": "(?<!\\|)\\|(?!\\|)"
+        },
+        {
+          "name": "variable.name.literal.phn",
+          "match": "[a-z]"
+        },
+        {
+          "name": "entity.name.type.wildcard.phn",
+          "match": "\\*"
+        },
+        {
+          "name": "entity.name.function.identifier.phn",
+          "match": ":[A-Za-z0-9]"
+        },
+        {
+          "include": "#category"
+        },
+        {
+          "include": "#unknown"
+        }
+      ]
+    },
+
+    "category": {
+      "name": "entity.name.type.category.phn",
+      "match": "[A-Z0-9_]+"
+    },
+
+    "unknown": {
+      "name": "variable.parameter.invalid.phn",
+      "match": "(?!\\s)."
+    }
+  },
+  "scopeName": "source.phn"
+}

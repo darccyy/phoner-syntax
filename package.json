@@ -1,0 +1,25 @@
+{
+  "name": "phn-syntax",
+  "displayName": "phn-syntax",
+  "description": "idk",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.73.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "phn",
+      "aliases": ["Phonotactic", "phn"],
+      "extensions": ["phn"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "phn",
+      "scopeName": "source.phn",
+      "path": "./syntaxes/phn.tmLanguage.json"
+    }]
+  }
+}
