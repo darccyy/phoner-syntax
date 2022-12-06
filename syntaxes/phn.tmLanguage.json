@@ -92,7 +92,7 @@
           "name": "keyword.operator.phn",
           "begin": "\\{",
           "end": "\\}",
-          "match": "\\{\\d\\}"
+          "match": "\\{\\d\\|,}"
         },
         {
           "name": "entity.name.type.phn",
