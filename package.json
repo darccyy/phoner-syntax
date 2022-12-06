@@ -2,7 +2,7 @@
   "name": "phoner-syntax",
   "displayName": "phoner-syntax",
   "description": "Syntax Highlighting for Phoner",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "engines": {
     "vscode": "^1.73.0"
   },
