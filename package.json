@@ -11,15 +11,15 @@
   ],
   "contributes": {
     "languages": [{
-      "id": "phn",
-      "aliases": ["Phoner", "phn"],
-      "extensions": ["phn"],
+      "id": "phoner",
+      "aliases": ["Phoner"],
+      "extensions": ["phoner", "phn"],
       "configuration": "./language-configuration.json"
     }],
     "grammars": [{
-      "language": "phn",
-      "scopeName": "source.phn",
-      "path": "./syntaxes/phn.tmLanguage.json"
+      "language": "phoner",
+      "scopeName": "source.phoner",
+      "path": "./syntaxes/phoner.tmLanguage.json"
     }]
   }
 }

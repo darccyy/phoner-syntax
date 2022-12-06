@@ -22,7 +22,7 @@
 
   "repository": {
     "comments": {
-      "name": "comment.line.phn",
+      "name": "comment.line.phoner",
       "begin": "#",
       "end": "\n"
     },
@@ -31,7 +31,7 @@
       "begin": "\\$[A-Z]",
       "end": "\n",
       "beginCaptures": {
-        "0": { "name": "entity.name.type.class.phn" }
+        "0": { "name": "entity.name.type.class.phoner" }
       },
       "patterns": [
         {
@@ -43,29 +43,33 @@
     "patterns": {
       "begin": "&",
       "end": "\n",
-      "beginCaptures": { "0": { "name": "keyword.operator.pattern.phn" } },
-      "patterns": [{ "include": "#regex" }, { "include": "#bang" }]
+      "beginCaptures": { "0": { "name": "keyword.operator.pattern.phoner" } },
+      "patterns": [{ "include": "#intent" }, { "include": "#regex" }]
     },
 
     "reasons": {
-      "name": "string.reason.phn",
+      "name": "string.reason.phoner",
       "begin": "@",
       "end": "\n",
-      "beginCaptures": { "0": { "name": "keyword.operator.reason.phn" } }
+      "beginCaptures": { "0": { "name": "keyword.operator.reason.phoner" } }
     },
 
     "tests": {
-      "name": "variable.literal.phn",
+      "name": "variable.literal.phoner",
       "begin": "\\*",
       "end": "\n",
-      "beginCaptures": { "0": { "name": "keyword.other.phn" } },
-      "patterns": [{ "include": "#bang" }]
+      "beginCaptures": { "0": { "name": "keyword.other.phoner" } },
+      "patterns": [{ "include": "#intent" }]
     },
 
-    "bang": {
+    "intent": {
       "patterns": [
         {
-          "name": "variable.language.self.phn",
+          "name": "keyword.control.phoner",
+          "match": "\\+"
+        },
+        {
+          "name": "variable.language.self.phoner",
           "match": "!"
         }
       ]
@@ -76,34 +80,34 @@
         {
           "begin": "\\(",
           "end": "\\)",
-          "beginCaptures": { "0": { "name": "punctuation.brackets.phn" } },
-          "endCaptures": { "0": { "name": "punctuation.brackets.phn" } },
+          "beginCaptures": { "0": { "name": "punctuation.brackets.phoner" } },
+          "endCaptures": { "0": { "name": "punctuation.brackets.phoner" } },
           "patterns": [{ "include": "#regex" }]
         },
         {
-          "name": "keyword.operator.phn",
+          "name": "keyword.operator.phoner",
           "match": "[\\[\\]\\?|\\|\\+\\*\\.]"
         },
         {
-          "name": "keyword.other.phn",
+          "name": "keyword.other.phoner",
           "match": "[\\^\\$]"
         },
         {
-          "name": "keyword.operator.phn",
+          "name": "keyword.operator.phoner",
           "begin": "\\{",
           "end": "\\}",
-          "match": "\\{\\d\\|,}"
+          "match": "\\{[\\d\\,]+}"
         },
         {
-          "name": "entity.name.type.phn",
+          "name": "entity.name.type.phoner",
           "match": "[A-Z]"
         },
         {
-          "name": "variable.literal.phn",
+          "name": "variable.literal.phoner",
           "match": "[A-Z]"
         }
       ]
     }
   },
-  "scopeName": "source.phn"
+  "scopeName": "source.phoner"
 }
