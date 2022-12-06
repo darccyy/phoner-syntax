@@ -7,19 +7,16 @@
       "include": "#comments"
     },
     {
-      "include": "#keywords"
+      "include": "#classes"
     },
     {
-      "include": "#category"
+      "include": "#patterns"
     },
     {
-      "include": "#punctuation"
+      "include": "#reasons"
     },
     {
-      "include": "#pattern"
-    },
-    {
-      "include": "#unknown"
+      "include": "#tests"
     }
   ],
 
@@ -30,84 +27,82 @@
       "end": "\n"
     },
 
-    "keywords": {
-      "name": "keyword.other.keyword.phn",
-      "match": "\\b(use|def|not)\\b"
-    },
-
-    "punctuation": {
-      "name": "keyword.operator.global.phn",
-      "match": "="
-    },
-
-    "pattern": {
-      "name": "punctuation.brackets.angle.pattern.phn",
-      "begin": "<",
-      "end": ">",
+    "classes": {
+      "begin": "\\$[A-Z]",
+      "end": "\n",
+      "beginCaptures": {
+        "0": { "name": "entity.name.type.class.phn" }
+      },
       "patterns": [
         {
-          "include": "#pattern-inner"
+          "include": "#regex"
         }
       ]
     },
 
-    "pattern-inner": {
+    "patterns": {
+      "begin": "&",
+      "end": "\n",
+      "beginCaptures": { "0": { "name": "keyword.operator.pattern.phn" } },
+      "patterns": [{ "include": "#regex" }, { "include": "#bang" }]
+    },
+
+    "reasons": {
+      "name": "string.reason.phn",
+      "begin": "@",
+      "end": "\n",
+      "beginCaptures": { "0": { "name": "keyword.operator.reason.phn" } }
+    },
+
+    "tests": {
+      "name": "variable.literal.phn",
+      "begin": "\\*",
+      "end": "\n",
+      "beginCaptures": { "0": { "name": "keyword.other.phn" } },
+      "patterns": [{ "include": "#bang" }]
+    },
+
+    "bang": {
       "patterns": [
         {
-          "name": "constant.character.escape.phn",
-          "match": "\\\\."
-        },
+          "name": "variable.language.self.phn",
+          "match": "!"
+        }
+      ]
+    },
+
+    "regex": {
+      "patterns": [
         {
-          "name": "punctuation.brackets.group.phn",
-          "begin": "\\[",
-          "end": "\\]",
-          "patterns": [{ "include": "#pattern-inner" }]
-        },
-        {
-          "name": "entity.name.function.optional.phn",
           "begin": "\\(",
           "end": "\\)",
-          "patterns": [{ "include": "#pattern-inner" }]
+          "beginCaptures": { "0": { "name": "punctuation.brackets.phn" } },
+          "endCaptures": { "0": { "name": "punctuation.brackets.phn" } },
+          "patterns": [{ "include": "#regex" }]
         },
         {
-          "name": "keyword.other.repeat.phn",
+          "name": "keyword.operator.phn",
+          "match": "[\\[\\]\\?|\\|\\+\\*\\.]"
+        },
+        {
+          "name": "keyword.other.phn",
+          "match": "[\\^\\$]"
+        },
+        {
+          "name": "keyword.operator.phn",
           "begin": "\\{",
           "end": "\\}",
-          "patterns": [{ "include": "#pattern-inner" }]
+          "match": "\\{\\d\\}"
         },
         {
-          "name": "keyword.operator.inner.phn",
-          "match": "(?<!\\|)\\|(?!\\|)"
+          "name": "entity.name.type.phn",
+          "match": "[A-Z]"
         },
         {
-          "name": "variable.name.literal.phn",
-          "match": "[a-z]"
-        },
-        {
-          "name": "entity.name.type.wildcard.phn",
-          "match": "\\*"
-        },
-        {
-          "name": "entity.name.function.identifier.phn",
-          "match": ":[A-Za-z0-9]"
-        },
-        {
-          "include": "#category"
-        },
-        {
-          "include": "#unknown"
+          "name": "variable.literal.phn",
+          "match": "[A-Z]"
         }
       ]
-    },
-
-    "category": {
-      "name": "entity.name.type.category.phn",
-      "match": "[A-Z0-9_]+"
-    },
-
-    "unknown": {
-      "name": "variable.parameter.invalid.phn",
-      "match": "(?!\\s)."
     }
   },
   "scopeName": "source.phn"
