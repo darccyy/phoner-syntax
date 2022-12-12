@@ -19,7 +19,7 @@
     },
 
     "statement": {
-      "begin": "(?<=^|;)\\s*(?!#)",
+      "begin": "(?<=(^|;)\\s*)\\s*(?!#)",
       "end": "$|;",
       "endCaptures": { "0": { "name": "keyword.operator.phoner" } },
       "patterns": [
@@ -32,7 +32,7 @@
     },
 
     "class": {
-      "begin": "(?<=^|;)\\s*\\$[a-zA-Z0-9]+",
+      "begin": "(?<=(^|;)\\s*)\\s*\\$\\w+",
       "end": "(?=$|;)",
       "beginCaptures": { "0": { "name": "entity.name.class.phoner" } },
       "patterns": [
@@ -48,13 +48,13 @@
     "rule": {
       "patterns": [
         {
-          "begin": "(?<=^|;)\\s*\\+",
+          "begin": "(?<=(^|;)\\s*)\\s*\\+",
           "end": "(?=$|;)",
           "beginCaptures": { "0": { "name": "keyword.control.phoner" } },
           "patterns": [{ "include": "#regex" }]
         },
         {
-          "begin": "(?<=^|;)\\s*!",
+          "begin": "(?<=(^|;)\\s*)\\s*!",
           "end": "(?=$|;)",
           "beginCaptures": { "0": { "name": "variable.language.self.phoner" } },
           "patterns": [{ "include": "#regex" }]
@@ -63,7 +63,7 @@
     },
 
     "test": {
-      "begin": "(?<=^|;)\\s*\\?\\s*(?=\\+|!)",
+      "begin": "(?<=(^|;)\\s*)\\?\\s*(?=\\+|!)",
       "end": "(?=$|;)",
       "beginCaptures": { "0": { "name": "keyword.other.phoner" } },
       "patterns": [
@@ -82,7 +82,7 @@
 
     "reason": {
       "name": "string.phoner",
-      "begin": "(?<=^|;)\\s*@",
+      "begin": "(?<=(^|;)\\s*)\\s*@",
       "end": "(?=$|;)",
       "beginCaptures": { "0": { "name": "keyword.operator.phoner" } },
       "patterns": [
@@ -96,7 +96,7 @@
 
     "note": {
       "name": "entity.name.function.phoner",
-      "begin": "(?<=^|;)\\s*\\*",
+      "begin": "(?<=(^|;)\\s*)\\s*\\*",
       "end": "(?=$|;)",
       "beginCaptures": { "0": { "name": "keyword.operator.phoner" } }
     },
@@ -126,7 +126,7 @@
         },
         {
           "name": "entity.name.type.phoner",
-          "match": "<[a-zA-Z0-9]+>"
+          "match": "<\\w+>"
         }
       ]
     }
