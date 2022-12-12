@@ -1,78 +1,97 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-  "name": "Phonotactic",
+  "name": "Phoner",
 
   "patterns": [
     {
-      "include": "#comments"
+      "include": "#comment"
     },
     {
-      "include": "#classes"
-    },
-    {
-      "include": "#patterns"
-    },
-    {
-      "include": "#reasons"
-    },
-    {
-      "include": "#tests"
+      "include": "#statement"
     }
   ],
 
   "repository": {
-    "comments": {
+    "comment": {
       "name": "comment.line.phoner",
       "begin": "#",
       "end": "\n"
     },
 
-    "classes": {
-      "begin": "\\$[A-Z]",
-      "end": "\n",
-      "beginCaptures": {
-        "0": { "name": "entity.name.type.class.phoner" }
-      },
+    "statement": {
+      "begin": "(?<=^|;)\\s*(?!#)",
+      "end": "$|;",
+      "endCaptures": { "0": { "name": "keyword.operator" } },
+      "patterns": [
+        { "include": "#class" },
+        { "include": "#rule" },
+        { "include": "#test" },
+        { "include": "#reason" },
+        { "include": "#note" }
+      ]
+    },
+
+    "class": {
+      "begin": "(?<=^|;)\\s*\\$[a-zA-Z0-9]+",
+      "end": "(?=$|;)",
+      "beginCaptures": { "0": { "name": "entity.name.class" } },
       "patterns": [
         {
-          "include": "#regex"
+          "begin": "=",
+          "end": "(?=$|;)",
+          "beginCaptures": { "0": { "name": "keyword.operator" } },
+          "patterns": [{ "include": "#regex" }]
         }
       ]
     },
 
-    "patterns": {
-      "begin": "&",
-      "end": "\n",
-      "beginCaptures": { "0": { "name": "keyword.operator.pattern.phoner" } },
-      "patterns": [{ "include": "#intent" }, { "include": "#regex" }]
-    },
-
-    "reasons": {
-      "name": "string.reason.phoner",
-      "begin": "@@?",
-      "end": "\n",
-      "beginCaptures": { "0": { "name": "keyword.operator.reason.phoner" } }
-    },
-
-    "tests": {
-      "name": "variable.literal.phoner",
-      "begin": "\\*",
-      "end": "\n",
-      "beginCaptures": { "0": { "name": "keyword.other.phoner" } },
-      "patterns": [{ "include": "#intent" }]
-    },
-
-    "intent": {
+    "rule": {
       "patterns": [
         {
-          "name": "keyword.control.phoner",
-          "match": "\\+"
+          "begin": "(?<=^|;)\\s*\\+",
+          "end": "(?=$|;)",
+          "beginCaptures": { "0": { "name": "keyword.control" } },
+          "patterns": [{ "include": "#regex" }]
         },
         {
-          "name": "variable.language.self.phoner",
-          "match": "!"
+          "begin": "(?<=^|;)\\s*!",
+          "end": "(?=$|;)",
+          "beginCaptures": { "0": { "name": "variable.language.self" } },
+          "patterns": [{ "include": "#regex" }]
         }
       ]
+    },
+
+    "test": {
+      "begin": "(?<=^|;)\\s*\\?\\s*(?=\\+|!)",
+      "end": "(?=$|;)",
+      "beginCaptures": { "0": { "name": "keyword.other" } },
+      "patterns": [
+        {
+          "begin": "\\+",
+          "end": "(?=$|;)",
+          "beginCaptures": { "0": { "name": "keyword.control" } }
+        },
+        {
+          "begin": "!",
+          "end": "(?=$|;)",
+          "beginCaptures": { "0": { "name": "variable.language.self" } }
+        }
+      ]
+    },
+
+    "reason": {
+      "name": "string",
+      "begin": "(?<=^|;)\\s*@",
+      "end": "(?=$|;)",
+      "beginCaptures": { "0": { "name": "keyword.operator" } }
+    },
+
+    "note": {
+      "name": "entity.name.function",
+      "begin": "(?<=^|;)\\s*\\*",
+      "end": "(?=$|;)",
+      "beginCaptures": { "0": { "name": "keyword.operator" } }
     },
 
     "regex": {
@@ -100,11 +119,7 @@
         },
         {
           "name": "entity.name.type.phoner",
-          "match": "[A-Z]"
-        },
-        {
-          "name": "variable.literal.phoner",
-          "match": "[A-Z]"
+          "match": "<[a-zA-Z0-9]+>"
         }
       ]
     }
