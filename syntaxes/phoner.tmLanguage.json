@@ -19,8 +19,8 @@
     },
 
     "statement": {
-      "begin": "(?<=(^|;)\\s*)\\s*(?!#)",
-      "end": "$|;",
+      "begin": "(?<=^|;)",
+      "end": "$|;|(?=\\s*#)",
       "endCaptures": { "0": { "name": "keyword.operator.phoner" } },
       "patterns": [
         { "include": "#class" },
