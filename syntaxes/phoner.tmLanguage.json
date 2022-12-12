@@ -14,12 +14,12 @@
   "repository": {
     "comment": {
       "name": "comment.line.phoner",
-      "begin": "#",
-      "end": "\n"
+      "begin": "\\s*#",
+      "end": "$|;"
     },
 
     "statement": {
-      "begin": "(?<=^|;)\\s*(?!#)",
+      "begin": "(?<=^|;)",
       "end": "$|;",
       "endCaptures": { "0": { "name": "keyword.operator" } },
       "patterns": [
