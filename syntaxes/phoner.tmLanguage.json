@@ -7,6 +7,9 @@
       "include": "#comment"
     },
     {
+      "include": "#semicolon"
+    },
+    {
       "include": "#statement"
     }
   ],
@@ -14,14 +17,18 @@
   "repository": {
     "comment": {
       "name": "comment.line.phoner",
-      "begin": "\\s*#",
+      "begin": ";?\\s*#",
       "end": "$|;"
+    },
+
+    "semicolon": {
+      "name": "keyword.operator.phoner",
+      "match": ";"
     },
 
     "statement": {
       "begin": "(?<=^|;)",
-      "end": "$|;|(?=\\s*#)",
-      "endCaptures": { "0": { "name": "keyword.operator.phoner" } },
+      "end": "$|(?=;)|(?=\\s*#)",
       "patterns": [
         { "include": "#mode" },
         { "include": "#class" },
