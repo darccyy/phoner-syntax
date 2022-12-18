@@ -34,9 +34,8 @@
 
     "mode": {
       "name": "keyword.control.phoner",
-      "begin": "(?<=(^|;)\\s*)\\s*%\\s*",
+      "begin": "(?<=(^|;)\\s*)\\s*~\\s*",
       "end": "(?=$|;)",
-      "beginCaptures": { "0": { "name": "keyword.operator.phoner" } },
       "patterns": [
         {
           "name": "keyword.control.phoner",
