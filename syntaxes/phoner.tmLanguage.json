@@ -87,7 +87,7 @@
       "beginCaptures": { "0": { "name": "keyword.operator.phoner" } },
       "patterns": [
         {
-          "begin": "\\s*\\*",
+          "begin": "(?<=@)\\s*\\*",
           "end": "(?=$|;)",
           "beginCaptures": { "0": { "name": "entity.name.function.phoner" } }
         }
