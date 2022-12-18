@@ -23,11 +23,25 @@
       "end": "$|;|(?=\\s*#)",
       "endCaptures": { "0": { "name": "keyword.operator.phoner" } },
       "patterns": [
+        { "include": "#mode" },
         { "include": "#class" },
         { "include": "#rule" },
         { "include": "#test" },
         { "include": "#reason" },
         { "include": "#note" }
+      ]
+    },
+
+    "mode": {
+      "name": "keyword.control.phoner",
+      "begin": "(?<=(^|;)\\s*)\\s*%\\s*",
+      "end": "(?=$|;)",
+      "beginCaptures": { "0": { "name": "keyword.operator.phoner" } },
+      "patterns": [
+        {
+          "name": "keyword.control.phoner",
+          "match": "(/.*/|<.*>|\\[.*\\])?"
+        }
       ]
     },
 
