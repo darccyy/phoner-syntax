@@ -42,7 +42,7 @@
     "mode": {
       "name": "keyword.control.phoner",
       "begin": "(?<=(^|;)\\s*)\\s*~\\s*",
-      "end": "(?=$|;)",
+      "end": "\\s*(?=$|;)",
       "patterns": [
         {
           "name": "keyword.control.phoner",
