@@ -18,7 +18,7 @@
     "comment": {
       "name": "comment.line.phoner",
       "begin": ";?\\s*#",
-      "end": "$|;"
+      "end": "$"
     },
 
     "semicolon": {
