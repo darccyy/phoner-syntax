@@ -132,7 +132,7 @@
         },
         {
           "name": "keyword.operator.phoner",
-          "match": "[\\[\\]\\?|\\|\\+\\*\\.]"
+          "match": "\\\\.|(?<=\\()\\?<?(=|!)|[\\[\\]\\|\\+\\*\\.]"
         },
         {
           "name": "keyword.other.phoner",
