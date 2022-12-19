@@ -132,7 +132,7 @@
         },
         {
           "name": "keyword.operator.phoner",
-          "match": "\\\\.|(?<=\\()\\?<?(=|!)|[\\[\\]\\|\\+\\*\\.]"
+          "match": "\\\\.|(?<=\\()\\?<?(=|!)|[\\[\\]\\|\\?\\+\\*\\.]"
         },
         {
           "name": "keyword.other.phoner",
@@ -142,7 +142,7 @@
           "name": "keyword.operator.phoner",
           "begin": "\\{",
           "end": "\\}",
-          "match": "\\{\\d*\\,?\\d*}"
+          "match": "\\{(\\d+\\,?\\d*)\\}|\\{(\\d*\\,\\d+)\\}"
         },
         {
           "name": "entity.name.type.phoner",
