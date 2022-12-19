@@ -142,7 +142,7 @@
           "name": "keyword.operator.phoner",
           "begin": "\\{",
           "end": "\\}",
-          "match": "\\{[\\d\\,]+}"
+          "match": "\\{\\d*\\,?\\d*}"
         },
         {
           "name": "entity.name.type.phoner",
