@@ -16,6 +16,7 @@
 
   "repository": {
     "comment": {
+      "comment": "Comments - Match preceding semicolon also",
       "name": "comment.line.phoner",
       "begin": ";?\\s*#",
       "end": "$"
@@ -27,6 +28,7 @@
     },
 
     "statement": {
+      "comment": "Statements",
       "begin": "(?<=^|;)",
       "end": "$|(?=;)|(?=\\s*#)",
       "patterns": [
@@ -40,11 +42,13 @@
     },
 
     "mode": {
+      "comment": "Mode",
       "name": "keyword.control.phoner",
       "begin": "(?<=(^|;)\\s*)\\s*~\\s*",
       "end": "\\s*(?=$|;)",
       "patterns": [
         {
+          "comment": "Mode Identifiers and Content",
           "name": "keyword.control.phoner",
           "match": "(/.*/|<.*>|\\[.*\\])?"
         }
@@ -52,11 +56,13 @@
     },
 
     "class": {
+      "comment": "Class Definitions",
       "begin": "(?<=(^|;)\\s*)\\s*\\$\\w+",
       "end": "(?=$|;)",
       "beginCaptures": { "0": { "name": "entity.name.class.phoner" } },
       "patterns": [
         {
+          "comment": "Regex after `=`",
           "begin": "=",
           "end": "(?=$|;)",
           "beginCaptures": { "0": { "name": "keyword.operator.phoner" } },
@@ -66,14 +72,17 @@
     },
 
     "rule": {
+      "comment": "Rules",
       "patterns": [
         {
+          "comment": "Positive Rules",
           "begin": "(?<=(^|;)\\s*)\\s*\\+",
           "end": "(?=$|;)",
           "beginCaptures": { "0": { "name": "keyword.control.phoner" } },
           "patterns": [{ "include": "#regex" }]
         },
         {
+          "comment": "Negative Rules",
           "begin": "(?<=(^|;)\\s*)\\s*!",
           "end": "(?=$|;)",
           "beginCaptures": { "0": { "name": "variable.language.self.phoner" } },
@@ -83,16 +92,19 @@
     },
 
     "test": {
+      "comment": "Tests",
       "begin": "(?<=(^|;)\\s*)\\?\\s*(?=\\+|!)",
       "end": "(?=$|;)",
       "beginCaptures": { "0": { "name": "keyword.other.phoner" } },
       "patterns": [
         {
+          "comment": "Positive Tests",
           "begin": "\\+",
           "end": "(?=$|;)",
           "beginCaptures": { "0": { "name": "keyword.control.phoner" } }
         },
         {
+          "comment": "Negative Tests",
           "begin": "!",
           "end": "(?=$|;)",
           "beginCaptures": { "0": { "name": "variable.language.self.phoner" } }
@@ -101,12 +113,14 @@
     },
 
     "reason": {
+      "comment": "Reasons",
       "name": "string.phoner",
       "begin": "(?<=(^|;)\\s*)\\s*@",
       "end": "(?=$|;)",
       "beginCaptures": { "0": { "name": "keyword.operator.phoner" } },
       "patterns": [
         {
+          "comment": "Noted Reasons",
           "begin": "(?<=@)\\s*\\*",
           "end": "(?=$|;)",
           "beginCaptures": { "0": { "name": "entity.name.function.phoner" } }
@@ -115,6 +129,7 @@
     },
 
     "note": {
+      "comment": "Notes",
       "name": "entity.name.function.phoner",
       "begin": "(?<=(^|;)\\s*)\\s*\\*",
       "end": "(?=$|;)",
@@ -124,6 +139,7 @@
     "regex": {
       "patterns": [
         {
+          "comment": "Groups",
           "begin": "\\(",
           "end": "\\)",
           "beginCaptures": { "0": { "name": "punctuation.brackets.phoner" } },
@@ -131,20 +147,24 @@
           "patterns": [{ "include": "#regex" }]
         },
         {
+          "comment": "Regex Operators and Lookarounds",
           "name": "keyword.operator.phoner",
           "match": "\\\\.|(?<=\\()\\?(<?(=|!)|:)|[\\[\\]\\|\\?\\+\\*\\.]|(?<=\\[)\\^"
         },
         {
+          "comment": "Negative Character Class",
           "name": "keyword.other.phoner",
           "match": "(?<!\\[)\\^|\\$"
         },
         {
+          "comment": "Quantifier",
           "name": "keyword.operator.phoner",
           "begin": "\\{",
           "end": "\\}",
           "match": "\\{(\\d+\\,?\\d*)\\}|\\{(\\d*\\,\\d+)\\}"
         },
         {
+          "comment": "Class Reference",
           "name": "entity.name.type.phoner",
           "match": "<\\w+>"
         }
