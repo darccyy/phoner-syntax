@@ -147,26 +147,36 @@
           "patterns": [{ "include": "#regex" }]
         },
         {
-          "comment": "Regex Operators and Lookarounds",
+          "comment": "Named Group References",
+          "name": "keyword.other.phoner",
+          "match": "\\\\k'.+'"
+        },
+        {
+          "comment": "Operators and Lookarounds",
           "name": "keyword.operator.phoner",
           "match": "\\\\.|(?<=\\()\\?(<?(=|!)|:)|[\\[\\]\\|\\?\\+\\*\\.]|(?<=\\[)\\^"
         },
         {
-          "comment": "Negative Character Class",
+          "comment": "Named Group Definitions",
+          "name": "keyword.other.phoner",
+          "match": "(?<=\\(\\?)<.+>"
+        },
+        {
+          "comment": "Meta Characters and Negative Character Classes",
           "name": "keyword.other.phoner",
           "match": "(?<!\\[)\\^|\\$"
         },
         {
-          "comment": "Quantifier",
+          "comment": "Quantifiers",
           "name": "keyword.operator.phoner",
           "begin": "\\{",
           "end": "\\}",
           "match": "\\{(\\d+\\,?\\d*)\\}|\\{(\\d*\\,\\d+)\\}"
         },
         {
-          "comment": "Class Reference",
+          "comment": "Class References",
           "name": "entity.name.type.phoner",
-          "match": "<\\w+>"
+          "match": "(?<!\\(\\?)<\\w+>"
         }
       ]
     }
