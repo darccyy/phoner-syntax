@@ -149,7 +149,7 @@
         {
           "comment": "Named Group References",
           "name": "keyword.other.phoner",
-          "match": "\\\\k\\s*<.+>"
+          "match": "\\\\k\\s*<[^<>]+>"
         },
         {
           "comment": "Operators and Lookarounds",
@@ -159,7 +159,7 @@
         {
           "comment": "Named Group Definitions",
           "name": "keyword.other.phoner",
-          "match": "(?<=\\(\\?)\\s*P?\\s*<[^>]+>"
+          "match": "(?<=\\(\\?)\\s*P?\\s*<[^<>]+>"
         },
         {
           "comment": "Meta Characters and Negative Character Classes",
